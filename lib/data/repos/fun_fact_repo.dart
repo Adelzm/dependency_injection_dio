@@ -7,10 +7,12 @@ abstract class FunFactRepo {
 }
 
 @Injectable(as: FunFactRepo)
-class CatFacts extends FunFactRepo {
+class FunFactsRepoImp extends FunFactRepo {
   final FactClient factClient;
 
-  CatFacts({required this.factClient});
+  FunFactsRepoImp({
+    @Named.from(CatFactClient) required this.factClient,
+  });
 
   @override
   Future<Fact> oneMoreFactPlease() async {

@@ -21,20 +21,20 @@ class _RestClient implements RestClient {
   String? baseUrl;
 
   @override
-  Future<Fact> randomFact() async {
+  Future<ApiResponse> randomFact(String path) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _result =
-        await _dio.fetch<Map<String, dynamic>>(_setStreamType<Fact>(Options(
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<ApiResponse>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              '/fact',
+              '/${path}',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -43,7 +43,7 @@ class _RestClient implements RestClient {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = Fact.fromJson(_result.data!);
+    final value = ApiResponse.fromJson(_result.data!);
     return value;
   }
 

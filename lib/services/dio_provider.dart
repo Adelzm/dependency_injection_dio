@@ -1,4 +1,4 @@
-import 'package:dependency_injection_dio/data/networking/i_config.dart';
+import 'package:dependency_injection_dio/data/networking/config.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 
